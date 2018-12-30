@@ -13,7 +13,10 @@ class LaView(ModelView):
     column_searchable_list = ['username']
 
     def is_accessible(self):
-        return current_user.username ==('admin')
+        if not current_user.is_authenticated():
+            return False
+        else:
+            return current_user.username == ('admin')
 
     def inaccessible_callback(self, name, **kwargs):
         # redirect to login page if user doesn't have access
