@@ -26,3 +26,16 @@ class User(UserMixin, db.Model):
     @login_manager.user_loader                  # 是否登录验证
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+
+class Alert(db.Model):
+    __tablename__ = 'alert'
+    al_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    # role_id = db.Column(db.Integer)
+    al_name = db.Column(db.String(64), unique=True, index=True)
+    al_num = db.Column(db.Integer)
+    al_1 = db.Column(db.String(255))
+    al_2 = db.Column(db.String(255))
+    al_3 = db.Column(db.String(255))
+    al_4 = db.Column(db.String(255))
+    al_5 = db.Column(db.String(255))
